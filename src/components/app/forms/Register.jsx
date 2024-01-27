@@ -6,6 +6,8 @@ import { FaSpinner } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "@/redux/slices/auth";
 
 const Register = () => {
   const {
@@ -14,9 +16,12 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const [isLoading, setIsLoading] = useState(false);
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
   async function onSubmit(data) {
     console.log(data);
+    // dispatch(setUser("abc"));
     setIsLoading(true);
 
     setTimeout(() => {
