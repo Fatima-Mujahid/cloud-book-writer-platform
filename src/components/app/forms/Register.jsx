@@ -1,11 +1,125 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { AuthWrapper } from "../AuthWrapper";
-// import { UserAuthForm } from "@/app/examples/authentication/components/user-auth-form";
+import { cn } from "@/lib/utils";
+import { FaSpinner } from "react-icons/fa6";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function onSubmit(data) {
+    console.log(data);
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }
+
   return (
     <AuthWrapper mode="register">
-      <div>Register Form</div>
+      <div className={cn("grid gap-6")}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid gap-[20px]">
+            <div className="grid gap-2">
+              <Label className="" htmlFor="firstName">
+                First Name<span className="asterisk">*</span>
+              </Label>
+              <Input
+                id="firstName"
+                placeholder="First name"
+                disabled={isLoading}
+                {...register("firstName", { required: true, maxLength: 15 })}
+              />
+              {errors.firstName && (
+                <p className="error">
+                  Please enter last name with maximum 15 characters.
+                </p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label className="" htmlFor="lastName">
+                Last Name<span className="asterisk">*</span>
+              </Label>
+              <Input
+                id="lastName"
+                placeholder="Last name"
+                disabled={isLoading}
+                {...register("lastName", { required: true, maxLength: 15 })}
+              />
+              {errors.lastName && (
+                <p className="error">
+                  Please enter first name with maximum 15 characters.
+                </p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label className="" htmlFor="email">
+                Email<span className="asterisk">*</span>
+              </Label>
+              <Input
+                id="email"
+                placeholder="name@example.com"
+                type="email"
+                autoComplete="email"
+                autoCorrect="off"
+                disabled={isLoading}
+                {...register("email", { required: true })}
+              />
+              {errors.email && (
+                <p className="error">Please enter valid email.</p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label className="" htmlFor="password">
+                Password<span className="asterisk">*</span>
+              </Label>
+              <Input
+                id="password"
+                placeholder="Password"
+                type="password"
+                disabled={isLoading}
+                {...register("password", { required: true, minLength: 8 })}
+              />
+              {errors.password && (
+                <p className="error">
+                  Please enter password with minimum 8 characters.
+                </p>
+              )}
+            </div>
+            <Button disabled={isLoading}>
+              {isLoading && <FaSpinner className="mr-2 h-4 w-4 animate-spin" />}
+              Register
+            </Button>
+          </div>
+        </form>
+        {/* <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-2 text-muted-foreground">
+              Or continue with
+            </span>
+          </div>
+        </div>
+        <Button variant="outline" type="button" disabled={isLoading}>
+          {isLoading ? (
+            <FaSpinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <FaGithub className="mr-2 h-4 w-4" />
+          )}{" "}
+          GitHub
+        </Button> */}
+      </div>
     </AuthWrapper>
   );
 };
