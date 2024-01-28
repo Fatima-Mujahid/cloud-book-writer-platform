@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { DashboardWrapper, Collaborators } from "@/components/app";
+import { DashboardWrapper, Collaborators, Section } from "@/components/app";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useSelector, useDispatch } from "react-redux";
 
 const BookSections = () => {
+  const book = useSelector((state) => state.book.book);
+
   return (
     <DashboardWrapper tab="books">
       <div className="flex flex-col gap-8 p-8 w-full max-w-[600px]">
@@ -15,13 +17,11 @@ const BookSections = () => {
           </Collaborators>
         </div>
         <div className={cn("flex flex-col gap-6 w-full")}>
-          <div className="flex justify-between items-center">
-            <p>Section 1</p>
-          </div>
-          <div className="flex justify-between items-center">
-            <p>Section 2</p>
-          </div>
+          {book.sections.map((section) => (
+            <Section key={section.id} parentId={null} section={section} />
+          ))}
         </div>
+        <Button>Add Section</Button>
       </div>
     </DashboardWrapper>
   );
