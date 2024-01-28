@@ -9,6 +9,10 @@ import {
 } from "@/components/ui/tooltip";
 
 const Nav = ({ links, isCollapsed }) => {
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+  };
+
   return (
     <div
       data-collapsed={isCollapsed}
@@ -62,7 +66,9 @@ const Nav = ({ links, isCollapsed }) => {
         )}
       </nav>
       <Link to="/login">
-        <Button variant="ghost">Logout</Button>
+        <Button variant="ghost" onClick={logoutUser}>
+          Logout
+        </Button>
       </Link>
     </div>
   );

@@ -27,7 +27,7 @@ const ManageAccount = () => {
   return (
     <DashboardWrapper tab="manageAccount">
       <div className="flex flex-col gap-8 p-8 w-full max-w-[600px]">
-        <h2 className="text-xl">Manage Account</h2>
+        <h2 className="text-xl font-bold">Manage Account</h2>
         <div className={cn("grid gap-6")}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-[20px]">

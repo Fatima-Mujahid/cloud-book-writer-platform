@@ -12,5 +12,52 @@
       "lastName": "Mujahid",
       "id": 2
     }
+  ],
+  "books": [
+    {
+      "title": "First Book :)",
+      "sections": [
+        {
+          "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+          "title": "Introduction",
+          "description": "",
+          "subsections": [
+            {
+              "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb55",
+              "title": "Intro to Platform",
+              "description": "",
+              "subsections": [
+                {
+                  "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb44",
+                  "title": "Intro to Platform (Menu Bar)",
+                  "description": "",
+                  "subsections": []
+                }
+              ]
+            },
+            {
+              "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb33",
+              "title": "Intro to Book Writing",
+              "description": "",
+              "subsections": [
+                {
+                  "id": "d430c775-9bce-4fe4-9f32-b8cf5fa9f0d5",
+                  "title": "Part 1",
+                  "description": "",
+                  "subsections": []
+                },
+                {
+                  "id": "de5471cd-2758-47d0-aaae-956bb6474807",
+                  "title": "Part 2",
+                  "description": "",
+                  "subsections": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "id": 1
+    }
   ]
 }

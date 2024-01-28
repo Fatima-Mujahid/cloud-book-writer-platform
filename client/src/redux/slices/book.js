@@ -2,43 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
-  book: {
-    title: "First Book",
-    sections: [
-      {
-        id: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
-        title: "Introduction",
-        description: "",
-        subsections: [
-          {
-            id: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb55",
-            title: "Intro to Platform",
-            description: "",
-            subsections: [
-              {
-                id: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb44",
-                title: "Intro to Platform (Menu Bar)",
-                description: "",
-                subsections: [],
-              },
-            ],
-          },
-          {
-            id: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb33",
-            title: "Intro to Book Writing",
-            description: "",
-            subsections: [],
-          },
-        ],
-      },
-    ],
-  },
+  book: null,
 };
 
 export const bookSlice = createSlice({
   name: "book",
   initialState,
   reducers: {
+    setBook: (state, action) => {
+      state.book = action.payload;
+    },
     setTitle: (state, action) => {
       state.book = { ...state.book, title: action.payload };
     },
@@ -124,7 +97,7 @@ export const bookSlice = createSlice({
   },
 });
 
-export const { setTitle, addSection, removeSection, setSectionTitle } =
+export const { setBook, setTitle, addSection, removeSection, setSectionTitle } =
   bookSlice.actions;
 
 export default bookSlice.reducer;
