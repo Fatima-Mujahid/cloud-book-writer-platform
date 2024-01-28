@@ -4,7 +4,7 @@ import { MdAccountCircle } from "react-icons/md";
 import { Nav } from "./Nav";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 
-const Dashboard = ({ children, tab }) => {
+const DashboardWrapper = ({ children, tab }) => {
   return (
     <div className="h-screen flex">
       <TooltipProvider delayDuration={0}>
@@ -31,4 +31,4 @@ const Dashboard = ({ children, tab }) => {
   );
 };
 
-export { Dashboard };
+export { DashboardWrapper };

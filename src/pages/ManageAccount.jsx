@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dashboard } from "./Dashboard";
+import { DashboardWrapper } from "@/components/app";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { FaSpinner } from "react-icons/fa6";
@@ -25,7 +25,7 @@ const ManageAccount = () => {
   }
 
   return (
-    <Dashboard tab="manageAccount">
+    <DashboardWrapper tab="manageAccount">
       <div className="flex flex-col gap-8 p-8 w-full max-w-[600px]">
         <h2 className="text-xl">Manage Account</h2>
         <div className={cn("grid gap-6")}>
@@ -73,7 +73,7 @@ const ManageAccount = () => {
           </form>
         </div>
       </div>
-    </Dashboard>
+    </DashboardWrapper>
   );
 };
 

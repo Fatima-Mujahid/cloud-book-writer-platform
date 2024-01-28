@@ -61,7 +61,9 @@ const Nav = ({ links, isCollapsed }) => {
           // )
         )}
       </nav>
-      <Button variant="ghost">Logout</Button>
+      <Link to="/login">
+        <Button variant="ghost">Logout</Button>
+      </Link>
     </div>
   );
 };

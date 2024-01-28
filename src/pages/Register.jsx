@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthWrapper } from "../AuthWrapper";
+import { AuthWrapper } from "@/components/app";
 import { cn } from "@/lib/utils";
 import { FaSpinner } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";

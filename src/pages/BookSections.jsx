@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Dashboard } from "./Dashboard";
+import { DashboardWrapper, Collaborators } from "@/components/app";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Collaborators } from "./Collaborators";
 
 const BookSections = () => {
   return (
-    <Dashboard tab="books">
+    <DashboardWrapper tab="books">
       <div className="flex flex-col gap-8 p-8 w-full max-w-[600px]">
         <div className="flex items-center justify-between">
           <h2 className="text-xl">Book Sections</h2>
@@ -24,7 +23,7 @@ const BookSections = () => {
           </div>
         </div>
       </div>
-    </Dashboard>
+    </DashboardWrapper>
   );
 };
 

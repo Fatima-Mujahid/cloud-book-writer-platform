@@ -5,7 +5,7 @@ import {
   ManageAccount,
   Books,
   BookSections,
-} from "./components/app";
+} from "./pages";
 
 import "./App.css";
 
