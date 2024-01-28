@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import { DashboardWrapper } from "@/components/app";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -10,9 +11,19 @@ const Books = () => {
   const [getBooks, { error }] = useLazyGetBooksQuery();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    const decodedToken = jwtDecode(token);
+
     const fetchBooks = async () => {
       const response = await getBooks();
-      setBooks(response.data);
+      const filteredBooks = response.data.filter((book) => {
+        return (
+          book.userId == decodedToken.sub ||
+          book.collaborators?.includes(decodedToken.email)
+        );
+      });
+
+      setBooks(filteredBooks);
     };
 
     fetchBooks();
@@ -27,9 +38,8 @@ const Books = () => {
             <div key={book.id} className="flex justify-between items-center">
               <p>{book.title}</p>
               <div className="flex gap-2">
-                <Button>Edit</Button>
                 <Link to={`/books/${book.id}`}>
-                  <Button>View</Button>
+                  <Button>Edit</Button>
                 </Link>
               </div>
             </div>

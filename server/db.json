@@ -11,15 +11,26 @@
       "firstName": "Anum",
       "lastName": "Mujahid",
       "id": 2
+    },
+    {
+      "email": "bintemujahid93@yahoo.com",
+      "password": "$2a$10$bIvo9VHrURFaxCxuNeOtQuQwl21MNJcM29eaYN4t2JTBbsBaTsKfu",
+      "firstName": "Amna",
+      "lastName": "Mujahid",
+      "id": 3
     }
   ],
   "books": [
     {
+      "userId": 2,
       "title": "First Book :)",
+      "collaborators": [
+        "bintemujahid93@yahoo.com"
+      ],
       "sections": [
         {
           "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
-          "title": "Introduction",
+          "title": "Introduction1223",
           "description": "",
           "subsections": [
             {
@@ -48,7 +59,7 @@
                 },
                 {
                   "id": "de5471cd-2758-47d0-aaae-956bb6474807",
-                  "title": "Part 2",
+                  "title": "Part 23",
                   "description": "",
                   "subsections": []
                 }

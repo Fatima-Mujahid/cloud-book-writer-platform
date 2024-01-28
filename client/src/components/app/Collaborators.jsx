@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -10,8 +11,53 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useSelector, useDispatch } from "react-redux";
+import { setBook } from "@/redux/slices/book";
+import { useParams } from "react-router-dom";
+import { useUpdateBookMutation } from "@/redux/services/book";
 
 const Collaborators = ({ children }) => {
+  const [updateBook, { error }] = useUpdateBookMutation();
+  const book = useSelector((state) => state.book.book);
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  let { id } = useParams();
+
+  const addCollab = async () => {
+    if (!book?.collaborators?.includes(email)) {
+      try {
+        const response = await updateBook({
+          id,
+          book: {
+            ...book,
+            collaborators: [...book.collaborators, email],
+          },
+        });
+        dispatch(setBook(response.data));
+        setEmail("");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const removeCollab = async (collaborator) => {
+    try {
+      const response = await updateBook({
+        id,
+        book: {
+          ...book,
+          collaborators: book.collaborators.filter(
+            (collab) => collab !== collaborator
+          ),
+        },
+      });
+      dispatch(setBook(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -52,16 +98,24 @@ const Collaborators = ({ children }) => {
             type="email"
             autoComplete="email"
             autoCorrect="off"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <Button>Add</Button>
+          <Button onClick={addCollab} disabled={!email}>
+            Add
+          </Button>
         </div>
         <div className="flex flex-col gap-2 text-muted-foreground text-sm my-4">
-          <p>collab1@gmail.com</p>
-          <p>collab2@gmail.com</p>
+          {book?.collaborators?.map((collaborator, index) => (
+            <div key={index} className="flex justify-between items-center">
+              <p>{collaborator}</p>
+              <Button onClick={() => removeCollab(collaborator)}>Remove</Button>
+            </div>
+          ))}
         </div>
-        <DialogFooter>
+        {/* <DialogFooter>
           <Button type="submit">Save changes</Button>
-        </DialogFooter>
+        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );

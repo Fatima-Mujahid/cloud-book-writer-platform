@@ -1,8 +1,30 @@
-# React + Vite
+# Cloud Book Writer Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A front-end React-based platform where users can create, edit, and collaborate on books.
 
-Currently, two official plugins are available:
+### Core Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Unlimited Sections and Subsections
+- User Authentication
+- Permission and Roles
+
+### Tools and Libraries
+
+- Frontend: React JS
+- State Management and APIs: Redux Toolkit
+- Styling: Shadcn and Tailwind CSS
+- Authentication and Authorization: JSON Server Auth
+
+### How to Use
+
+To use this project, follow the steps:
+
+- Clone the repository.
+- Run the following commands to run client:
+  - cd cloud-book-writer-platform/client
+  - npm install
+  - npm run dev
+- Run the following commands to run server:
+  - cd cloud-book-writer-platform/server
+  - npm install
+  - npm run start

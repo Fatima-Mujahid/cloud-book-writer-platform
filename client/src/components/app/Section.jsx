@@ -9,6 +9,7 @@ import {
 } from "@/redux/slices/book";
 
 const Section = ({ section, parentId }) => {
+  const isCollaborator = useSelector((state) => state.book.isCollaborator);
   const dispatch = useDispatch();
 
   return (
@@ -23,20 +24,22 @@ const Section = ({ section, parentId }) => {
             dispatch(setSectionTitle({ id: section.id, title: e.target.value }))
           }
         />
-        <div className="flex gap-2">
-          <Button
-            onClick={() => dispatch(addSection({ parentId: section.id }))}
-          >
-            +
-          </Button>
-          <Button
-            onClick={() =>
-              dispatch(removeSection({ parentId, id: section.id }))
-            }
-          >
-            -
-          </Button>
-        </div>
+        {!isCollaborator && (
+          <div className="flex gap-2">
+            <Button
+              onClick={() => dispatch(addSection({ parentId: section.id }))}
+            >
+              +
+            </Button>
+            <Button
+              onClick={() =>
+                dispatch(removeSection({ parentId, id: section.id }))
+              }
+            >
+              -
+            </Button>
+          </div>
+        )}
       </div>
       {section.subsections.map((subsection) => (
         <Section

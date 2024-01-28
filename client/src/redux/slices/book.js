@@ -3,12 +3,16 @@ import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   book: null,
+  isCollaborator: false,
 };
 
 export const bookSlice = createSlice({
   name: "book",
   initialState,
   reducers: {
+    setIsCollaborator: (state, action) => {
+      state.isCollaborator = action.payload;
+    },
     setBook: (state, action) => {
       state.book = action.payload;
     },
@@ -42,7 +46,7 @@ export const bookSlice = createSlice({
       };
 
       state.book = {
-        title: state.book.title,
+        ...state.book,
         sections: updateState(state.book.sections),
       };
     },
@@ -67,7 +71,7 @@ export const bookSlice = createSlice({
       };
 
       state.book = {
-        title: state.book.title,
+        ...state.book,
         sections: updateState(state.book.sections),
       };
     },
@@ -90,6 +94,7 @@ export const bookSlice = createSlice({
       };
 
       state.book = {
+        ...state.book,
         title: state.book.title,
         sections: updateState(state.book.sections),
       };
@@ -97,7 +102,13 @@ export const bookSlice = createSlice({
   },
 });
 
-export const { setBook, setTitle, addSection, removeSection, setSectionTitle } =
-  bookSlice.actions;
+export const {
+  setIsCollaborator,
+  setBook,
+  setTitle,
+  addSection,
+  removeSection,
+  setSectionTitle,
+} = bookSlice.actions;
 
 export default bookSlice.reducer;
