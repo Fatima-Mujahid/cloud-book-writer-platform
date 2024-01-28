@@ -3,9 +3,11 @@ import { DashboardWrapper, Collaborators, Section } from "@/components/app";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useSelector, useDispatch } from "react-redux";
+import { addSection } from "@/redux/slices/book";
 
 const BookSections = () => {
   const book = useSelector((state) => state.book.book);
+  const dispatch = useDispatch();
 
   return (
     <DashboardWrapper tab="books">
@@ -21,7 +23,7 @@ const BookSections = () => {
             <Section key={section.id} parentId={null} section={section} />
           ))}
         </div>
-        <Button>Add Section</Button>
+        <Button onClick={() => dispatch(addSection(null))}>Add Section</Button>
       </div>
     </DashboardWrapper>
   );

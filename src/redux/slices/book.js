@@ -72,20 +72,54 @@ export const bookSlice = createSlice({
         title: state.book.title,
         sections: updateState(state.book.sections),
       };
-      // const parentSection = findSection(state.book.sections, action.payload.parentId);
-      // parentSection.subsections.push({
-      //   id: newSubsectionId,
-      //   title: `New Subsection ${newSubsectionId}`,
-      //   description: "",
-      //   subsections: [],
-      // });
-      // setSections([...sections]);
     },
     removeSection: (state, action) => {
-      console.log(action.payload);
+      const updateState = (sections) => {
+        return sections.map((section) => {
+          if (section.id === action.payload.parentId) {
+            return {
+              ...section,
+              subsections: section.subsections.filter(
+                (subsection) => subsection.id !== action.payload.id
+              ),
+            };
+          } else if (section.subsections.length > 0) {
+            return {
+              ...section,
+              subsections: updateState(section.subsections),
+            };
+          }
+          return section;
+        });
+      };
+
+      state.book = {
+        title: state.book.title,
+        sections: updateState(state.book.sections),
+      };
     },
     setSectionTitle: (state, action) => {
-      console.log(action.payload);
+      const updateState = (sections) => {
+        return sections.map((section) => {
+          if (section.id === action.payload.id) {
+            return {
+              ...section,
+              title: action.payload.title,
+            };
+          } else if (section.subsections.length > 0) {
+            return {
+              ...section,
+              subsections: updateState(section.subsections),
+            };
+          }
+          return section;
+        });
+      };
+
+      state.book = {
+        title: state.book.title,
+        sections: updateState(state.book.sections),
+      };
     },
   },
 });

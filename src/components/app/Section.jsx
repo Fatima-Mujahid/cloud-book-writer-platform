@@ -19,7 +19,9 @@ const Section = ({ section, parentId }) => {
           id="title"
           placeholder="Section title"
           defaultValue={section.title}
-          onChange={(e) => dispatch(setSectionTitle(e.target.value))}
+          onChange={(e) =>
+            dispatch(setSectionTitle({ id: section.id, title: e.target.value }))
+          }
         />
         <div className="flex gap-2">
           <Button
