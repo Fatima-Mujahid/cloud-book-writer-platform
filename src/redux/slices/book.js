@@ -35,19 +35,6 @@ const initialState = {
   },
 };
 
-const findSection = (sections, id) => {
-  for (const section of sections) {
-    if (section.id === id) {
-      return section;
-    }
-    const foundSubsection = findSection(section.subsections, id);
-    if (foundSubsection) {
-      return foundSubsection;
-    }
-  }
-  return null;
-};
-
 export const bookSlice = createSlice({
   name: "book",
   initialState,
@@ -56,7 +43,35 @@ export const bookSlice = createSlice({
       state.book = { ...state.book, title: action.payload };
     },
     addSection: (state, action) => {
-      console.log(action.payload);
+      const updateState = (sections) => {
+        return sections.map((section) => {
+          if (section.id === action.payload.parentId) {
+            return {
+              ...section,
+              subsections: [
+                ...section.subsections,
+                {
+                  id: uuidv4(),
+                  title: "New subsection",
+                  description: "",
+                  subsections: [],
+                },
+              ],
+            };
+          } else if (section.subsections.length > 0) {
+            return {
+              ...section,
+              subsections: updateState(section.subsections),
+            };
+          }
+          return section;
+        });
+      };
+
+      state.book = {
+        title: state.book.title,
+        sections: updateState(state.book.sections),
+      };
       // const parentSection = findSection(state.book.sections, action.payload.parentId);
       // parentSection.subsections.push({
       //   id: newSubsectionId,
