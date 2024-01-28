@@ -24,13 +24,11 @@
     {
       "userId": 2,
       "title": "First Book :)",
-      "collaborators": [
-        "bintemujahid93@yahoo.com"
-      ],
+      "collaborators": ["bintemujahid93@yahoo.com"],
       "sections": [
         {
           "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
-          "title": "Introduction1223",
+          "title": "Introduction",
           "description": "",
           "subsections": [
             {
@@ -59,7 +57,7 @@
                 },
                 {
                   "id": "de5471cd-2758-47d0-aaae-956bb6474807",
-                  "title": "Part 23",
+                  "title": "Part 2",
                   "description": "",
                   "subsections": []
                 }
@@ -69,6 +67,33 @@
         }
       ],
       "id": 1
+    },
+    {
+      "userId": 1,
+      "title": "Second Book",
+      "collaborators": ["anum.mujahid.se@gmail.com"],
+      "sections": [
+        {
+          "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+          "title": "Abstract",
+          "description": "",
+          "subsections": []
+        },
+        {
+          "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+          "title": "Introduction",
+          "description": "",
+          "subsections": [
+            {
+              "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb55",
+              "title": "Outline",
+              "description": "",
+              "subsections": []
+            }
+          ]
+        }
+      ],
+      "id": 2
     }
   ]
 }
