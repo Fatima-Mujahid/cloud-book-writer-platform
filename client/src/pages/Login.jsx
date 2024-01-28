@@ -6,8 +6,12 @@ import { FaSpinner } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useLoginMutation } from "@/redux/services/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [login, { error }] = useLoginMutation();
   const {
     register,
     handleSubmit,
@@ -16,14 +20,10 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   async function onSubmit(data) {
-    console.log(data);
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    const response = await login(data);
+    localStorage.setItem("token", response.data.accessToken);
+    navigate("/books");
   }
-
   return (
     <AuthWrapper mode="login">
       <div className={cn("grid gap-6")}>

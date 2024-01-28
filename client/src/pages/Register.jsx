@@ -8,8 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "@/redux/slices/auth";
+import { useSignupMutation } from "@/redux/services/auth";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [signup, { error }] = useSignupMutation();
   const {
     register,
     handleSubmit,
@@ -20,13 +24,9 @@ const Register = () => {
   const dispatch = useDispatch();
 
   async function onSubmit(data) {
-    console.log(data);
-    // dispatch(setUser("abc"));
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    const response = await signup(data);
+    localStorage.setItem("token", response.data.accessToken);
+    navigate("/books");
   }
 
   return (

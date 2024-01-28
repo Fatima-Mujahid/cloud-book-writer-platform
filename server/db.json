@@ -1,9 +1,16 @@
 {
   "users": [
     {
-      "email": "fatimamujahid01@mail.com",
-      "password": "$2a$10$QxL97clrEEh.s4w1ruiNfuUH2Gl5.d44RE56y/c0WN3Dias0MYEK6",
+      "email": "fatimamujahid01@gmail.com",
+      "password": "$2a$10$csJoaogrePTPQYPacn79gegYTH1MjaKYHVzSRqp0UCydNjShFbVkq",
       "id": 1
+    },
+    {
+      "email": "anum.mujahid.se@gmail.com",
+      "password": "$2a$10$nxZ/Z3DzZ9G4CKlOXGsx7O/GLMkWHFNd.OH9AoXktBsPdpLT7hh.W",
+      "firstName": "Anum",
+      "lastName": "Mujahid",
+      "id": 2
     }
   ]
 }
