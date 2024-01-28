@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Register, Login } from "./components/app";
+import { Register, Login, ManageAccount, Books } from "./components/app";
 
 import "./App.css";
 
@@ -10,6 +10,8 @@ function App() {
         <Route exact path="/" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/books" element={<Books />} />
+        <Route exact path="/manage-account" element={<ManageAccount />} />
       </Routes>
     </Router>
   );

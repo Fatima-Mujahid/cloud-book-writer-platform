@@ -65,7 +65,7 @@ const Login = () => {
             </div>
             <Button disabled={isLoading}>
               {isLoading && <FaSpinner className="mr-2 h-4 w-4 animate-spin" />}
-              Register
+              Login
             </Button>
           </div>
         </form>
