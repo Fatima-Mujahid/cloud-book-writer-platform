@@ -7,6 +7,7 @@ const router = jsonServer.router("db.json");
 
 // /!\ Bind the router db to the app
 app.db = router.db;
+console.log("In server");
 
 // You must apply the auth middleware before the router
 app.use(cors());
