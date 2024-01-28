@@ -63,12 +63,14 @@ const BookSections = () => {
             <span className="font-semibold">Author:</span> {author}
           </h2> */}
           </div>
-          <Button
-            className="w-[120px] self-start"
-            onClick={() => dispatch(addSection(null))}
-          >
-            Add Section
-          </Button>
+          {!isCollaborator && (
+            <Button
+              className="w-[120px] self-start"
+              onClick={() => dispatch(addSection(null))}
+            >
+              Add Section
+            </Button>
+          )}
         </div>
         <div className={cn("flex flex-col gap-6 w-full")}>
           {book?.sections.map((section) => (
