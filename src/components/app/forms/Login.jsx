@@ -30,7 +30,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-[20px]">
             <div className="grid gap-2">
-              <Label className="" htmlFor="email">
+              <Label htmlFor="email">
                 Email<span className="asterisk">*</span>
               </Label>
               <Input
@@ -47,7 +47,7 @@ const Login = () => {
               )}
             </div>
             <div className="grid gap-2">
-              <Label className="" htmlFor="password">
+              <Label htmlFor="password">
                 Password<span className="asterisk">*</span>
               </Label>
               <Input

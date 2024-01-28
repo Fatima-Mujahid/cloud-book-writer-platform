@@ -67,7 +67,7 @@ const ManageAccount = () => {
                 {isLoading && (
                   <FaSpinner className="mr-2 h-4 w-4 animate-spin" />
                 )}
-                Save
+                Save changes
               </Button>
             </div>
           </form>

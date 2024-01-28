@@ -35,7 +35,7 @@ const Register = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-[20px]">
             <div className="grid gap-2">
-              <Label className="" htmlFor="firstName">
+              <Label htmlFor="firstName">
                 First Name<span className="asterisk">*</span>
               </Label>
               <Input
@@ -51,7 +51,7 @@ const Register = () => {
               )}
             </div>
             <div className="grid gap-2">
-              <Label className="" htmlFor="lastName">
+              <Label htmlFor="lastName">
                 Last Name<span className="asterisk">*</span>
               </Label>
               <Input
@@ -67,7 +67,7 @@ const Register = () => {
               )}
             </div>
             <div className="grid gap-2">
-              <Label className="" htmlFor="email">
+              <Label htmlFor="email">
                 Email<span className="asterisk">*</span>
               </Label>
               <Input
@@ -84,7 +84,7 @@ const Register = () => {
               )}
             </div>
             <div className="grid gap-2">
-              <Label className="" htmlFor="password">
+              <Label htmlFor="password">
                 Password<span className="asterisk">*</span>
               </Label>
               <Input
